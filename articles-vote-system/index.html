@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/frontend.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="env">
+    <div class="container">
+        <div class="flex">
+            <p>Did you like this article?</p>
+            <!-- //toggle radio  -->
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" onclick="send_signUP_data()">
+                <label class="custom-control-label" for="customRadioInline1" >Toggle this custom radio</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" onclick="send_signUP_data()">
+                <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+            </div>
+    
+            <button class="btn btn-primary" type="submit" ">Signup</button>
+        </div>
+    </div>
+</div>
+    <!--scripts-->
+    <script>
+
+    function send_signUP_data() {
+
+        let email = $("#email").val();
+        let password = $("#password").val();
+        let password2 = $("#password2").val();
+        let fullname = $("#fullname").val();
+
+        $.post(
+            "1.php", {
+                do_signup : "do_signup",
+                email: email,
+                password : password,
+                password2 : password2,
+                fullname : fullname,
+            },
+            function(response) {
+            response = JSON.parse(response);
+            alert(response['text']);
+            if (response['text']== "successful"){
+                response
+                window.location.href = "login.html";
+            }
+        }
+    );
+
+    }
+</script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

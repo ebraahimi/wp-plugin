@@ -1,0 +1,9 @@
+.env{
+    width: 40%;
+    height: auto;
+    background-color: inherit;
+    border-style: dashed;
+    border-radius: 5%;
+    border-color: darkorchid;
+    padding: 3%;
+}
